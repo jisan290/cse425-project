@@ -1,0 +1,16 @@
+{
+  "task": "Task 2 - GraphSAGE on segment graphs vs. CNN mel-spectrogram baseline",
+  "test_tuned": {
+    "macro_f1": 0.0923,
+    "micro_f1": 0.1028,
+    "roc_auc": 0.4821,
+    "pr_auc": 0.2549
+  },
+  "baseline_cnn_mel_spectrogram": {
+    "macro_f1": 0.0872,
+    "micro_f1": 0.0996,
+    "roc_auc": 0.4155,
+    "pr_auc": 0.2852
+  },
+  "notes": "Trained on the 108/14/11 audio-having subset. With only 11 test clips, neither model is reliably better than the other or clearly better than chance -- read as data-starvation, not architectural weakness (Section 5 of the report)."
+}

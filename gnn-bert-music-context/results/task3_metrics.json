@@ -1,0 +1,44 @@
+{
+  "task": "Task 3 - GNN-BERT fusion, 4-way ablation",
+  "baselines": {
+    "b1_random_tags": {
+      "macro_f1": 0.0822,
+      "micro_f1": 0.1,
+      "roc_auc": 0.4774,
+      "pr_auc": 0.2975
+    },
+    "b1b_training_set_prior": {
+      "macro_f1": 0.0,
+      "micro_f1": 0.0,
+      "roc_auc": 0.5,
+      "pr_auc": 0.1198
+    }
+  },
+  "ablation": {
+    "bert_only": {
+      "macro_f1": 0.0247,
+      "micro_f1": 0.1176,
+      "roc_auc": 0.7823,
+      "pr_auc": 0.4955
+    },
+    "gnn_only": {
+      "macro_f1": 0.0926,
+      "micro_f1": 0.1016,
+      "roc_auc": 0.4586,
+      "pr_auc": 0.2689
+    },
+    "concat": {
+      "macro_f1": 0.1793,
+      "micro_f1": 0.2233,
+      "roc_auc": 0.8295,
+      "pr_auc": 0.5887
+    },
+    "cross_attn": {
+      "macro_f1": 0.1871,
+      "micro_f1": 0.2294,
+      "roc_auc": 0.8154,
+      "pr_auc": 0.5394
+    }
+  },
+  "notes": "Trained on the same 108/14/11 audio subset paired with captions. Cross-attention (the primary/adopted model) beats both single-modality ablations and both baselines; early concat scores marginally higher but n=11 puts that ordering within sampling noise (Section 6 of the report)."
+}

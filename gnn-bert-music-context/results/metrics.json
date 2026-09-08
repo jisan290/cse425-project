@@ -1,0 +1,210 @@
+{
+  "task1": {
+    "task": "Task 1 - DistilBERT multi-label tag classifier",
+    "test_at_0.5": {
+      "macro_f1": 0.9996,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0
+    },
+    "test_tuned": {
+      "macro_f1": 0.999,
+      "micro_f1": 0.9993,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0
+    },
+    "honesty_check_ablation": {
+      "raw_caption": {
+        "macro_f1": 0.999,
+        "roc_auc": 1.0,
+        "pr_auc": 1.0
+      },
+      "tag_masked_caption": {
+        "macro_f1": 0.2076,
+        "roc_auc": 0.7689,
+        "pr_auc": 0.1403
+      },
+      "metadata_only": {
+        "macro_f1": 0.1477,
+        "roc_auc": 0.6457,
+        "pr_auc": 0.1086
+      }
+    },
+    "notes": "Trained on the full 25,863-clip text corpus (20,690/2,586/2,587 train/val/test). Near-perfect score is a measurement artifact of MagnaTagATune lacking natural-language captions -- see honesty_check_ablation and Section 4.2 of the report."
+  },
+  "task2": {
+    "task": "Task 2 - GraphSAGE on segment graphs vs. CNN mel-spectrogram baseline",
+    "test_tuned": {
+      "macro_f1": 0.0923,
+      "micro_f1": 0.1028,
+      "roc_auc": 0.4821,
+      "pr_auc": 0.2549
+    },
+    "baseline_cnn_mel_spectrogram": {
+      "macro_f1": 0.0872,
+      "micro_f1": 0.0996,
+      "roc_auc": 0.4155,
+      "pr_auc": 0.2852
+    },
+    "notes": "Trained on the 108/14/11 audio-having subset. With only 11 test clips, neither model is reliably better than the other or clearly better than chance -- read as data-starvation, not architectural weakness (Section 5 of the report)."
+  },
+  "task3": {
+    "task": "Task 3 - GNN-BERT fusion, 4-way ablation",
+    "baselines": {
+      "b1_random_tags": {
+        "macro_f1": 0.0822,
+        "micro_f1": 0.1,
+        "roc_auc": 0.4774,
+        "pr_auc": 0.2975
+      },
+      "b1b_training_set_prior": {
+        "macro_f1": 0.0,
+        "micro_f1": 0.0,
+        "roc_auc": 0.5,
+        "pr_auc": 0.1198
+      }
+    },
+    "ablation": {
+      "bert_only": {
+        "macro_f1": 0.0247,
+        "micro_f1": 0.1176,
+        "roc_auc": 0.7823,
+        "pr_auc": 0.4955
+      },
+      "gnn_only": {
+        "macro_f1": 0.0926,
+        "micro_f1": 0.1016,
+        "roc_auc": 0.4586,
+        "pr_auc": 0.2689
+      },
+      "concat": {
+        "macro_f1": 0.1793,
+        "micro_f1": 0.2233,
+        "roc_auc": 0.8295,
+        "pr_auc": 0.5887
+      },
+      "cross_attn": {
+        "macro_f1": 0.1871,
+        "micro_f1": 0.2294,
+        "roc_auc": 0.8154,
+        "pr_auc": 0.5394
+      }
+    },
+    "notes": "Trained on the same 108/14/11 audio subset paired with captions. Cross-attention (the primary/adopted model) beats both single-modality ablations and both baselines; early concat scores marginally higher but n=11 puts that ordering within sampling noise (Section 6 of the report)."
+  },
+  "task4": {
+    "task": "Task 4 (bonus) - contrastive dual-encoder retrieval + zero-shot tag prediction",
+    "history": [
+      {
+        "epoch": 1,
+        "train_loss": 3.3961,
+        "val_loss": 2.6481
+      },
+      {
+        "epoch": 2,
+        "train_loss": 3.3728,
+        "val_loss": 2.6445
+      },
+      {
+        "epoch": 3,
+        "train_loss": 3.3491,
+        "val_loss": 2.643
+      },
+      {
+        "epoch": 4,
+        "train_loss": 3.3239,
+        "val_loss": 2.6361
+      },
+      {
+        "epoch": 5,
+        "train_loss": 3.2895,
+        "val_loss": 2.626
+      },
+      {
+        "epoch": 6,
+        "train_loss": 3.2405,
+        "val_loss": 2.6242
+      },
+      {
+        "epoch": 7,
+        "train_loss": 3.1904,
+        "val_loss": 2.6251
+      },
+      {
+        "epoch": 8,
+        "train_loss": 3.1352,
+        "val_loss": 2.626
+      },
+      {
+        "epoch": 9,
+        "train_loss": 3.0858,
+        "val_loss": 2.6317
+      },
+      {
+        "epoch": 10,
+        "train_loss": 3.0073,
+        "val_loss": 2.6284
+      },
+      {
+        "epoch": 11,
+        "train_loss": 2.8982,
+        "val_loss": 2.6365
+      },
+      {
+        "epoch": 12,
+        "train_loss": 2.8243,
+        "val_loss": 2.6368
+      },
+      {
+        "epoch": 13,
+        "train_loss": 2.7111,
+        "val_loss": 2.6511
+      },
+      {
+        "epoch": 14,
+        "train_loss": 2.6453,
+        "val_loss": 2.6636
+      },
+      {
+        "epoch": 15,
+        "train_loss": 2.5623,
+        "val_loss": 2.6807
+      }
+    ],
+    "best_epoch": 6,
+    "best_val_loss": 2.6242,
+    "retrieval_metrics": {
+      "audio_to_caption": {
+        "R@1": 0.0909,
+        "R@5": 0.5455,
+        "R@10": 0.9091
+      },
+      "caption_to_audio": {
+        "R@1": 0.0,
+        "R@5": 0.6364,
+        "R@10": 0.9091
+      },
+      "chance_level": {
+        "R@1": 0.0909,
+        "R@5": 0.4545,
+        "R@10": 0.9091
+      },
+      "n_test": 11
+    },
+    "zero_shot_vs_task3": {
+      "zero_shot": {
+        "macro_f1": 0.0374,
+        "micro_f1": 0.0853,
+        "roc_auc": 0.4413,
+        "pr_auc": 0.2646
+      },
+      "task3_supervised": {
+        "macro_f1": 0.1871,
+        "micro_f1": 0.2294,
+        "roc_auc": 0.8154,
+        "pr_auc": 0.5394
+      },
+      "pr_auc_gap": 0.2749
+    },
+    "notes": "Best-validation-loss checkpoint (epoch 6) restored before evaluation. Most retrieval values sit within one test clip of the random-chance baseline for n=11; caption-to-audio R@5 sits two clips above chance, a mildly encouraging but uncertified signal at this sample size (Section 7 of the report). Zero-shot tag prediction (no label training at all) underperforms Task 3's supervised model as expected, confirming supervision is doing real work (Section 7.1)."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "task": "Task 1 - DistilBERT multi-label tag classifier",
+  "test_at_0.5": {
+    "macro_f1": 0.9996,
+    "roc_auc": 1.0,
+    "pr_auc": 1.0
+  },
+  "test_tuned": {
+    "macro_f1": 0.999,
+    "micro_f1": 0.9993,
+    "roc_auc": 1.0,
+    "pr_auc": 1.0
+  },
+  "honesty_check_ablation": {
+    "raw_caption": {
+      "macro_f1": 0.999,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0
+    },
+    "tag_masked_caption": {
+      "macro_f1": 0.2076,
+      "roc_auc": 0.7689,
+      "pr_auc": 0.1403
+    },
+    "metadata_only": {
+      "macro_f1": 0.1477,
+      "roc_auc": 0.6457,
+      "pr_auc": 0.1086
+    }
+  },
+  "notes": "Trained on the full 25,863-clip text corpus (20,690/2,586/2,587 train/val/test). Near-perfect score is a measurement artifact of MagnaTagATune lacking natural-language captions -- see honesty_check_ablation and Section 4.2 of the report."
+}
