@@ -1,0 +1,64 @@
+# CSE425 — GNN + BERT Music Context Understanding
+# Central config so hyperparameters live in one place instead of
+# being scattered across notebook cells.
+
+paths:
+  data_dir: data/processed          # where mtat_master.csv / dataset_meta.json live
+  graph_dir: data/processed/task2_graphs
+  results_dir: results
+  plots_dir: results/plots
+
+dataset:
+  name: MagnaTagATune
+  top_k_tags: 50
+  # Kaggle dataset slug used for kagglehub auto-download.
+  # Set this to your attached dataset's owner/slug (see its Kaggle URL).
+  kagglehub_slug: "yalumusic/magnatagatune"
+  split_ratio: [0.80, 0.10, 0.10]   # train / val / test
+  seed: 42
+
+audio:
+  sample_rate: 22050
+  segment_seconds: 5.0
+  n_mfcc: 20
+  n_chroma: 12
+  similarity_threshold: 0.75
+  max_similarity_edges_per_node: 2
+
+task1_bert:
+  model_name: distilbert-base-uncased
+  max_len: 128
+  batch_size: 32
+  epochs: 5
+  lr_bert: 2.0e-5
+  lr_head: 1.0e-3
+
+task2_gnn:
+  hidden_channels: 128
+  dropout: 0.25
+  batch_size: 64
+  epochs: 10
+  lr: 1.0e-3
+
+task2_cnn_baseline:
+  mel_bins: 128
+  mel_frames: 512
+  batch_size: 32
+  epochs: 5
+
+task3_fusion:
+  hidden: 128
+  dropout: 0.2
+  batch_size: 16
+  epochs: 8
+  lr_bert: 2.0e-5
+  lr_other: 1.0e-3
+  modes: [gnn_only, bert_only, concat, cross_attn]
+
+task4_contrastive:
+  embed_dim: 128
+  temperature: 0.07
+  batch_size: 32
+  epochs: 15
+  lr: 2.0e-5
+  retrieval_ks: [1, 5, 10]
