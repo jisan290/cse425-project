@@ -1,0 +1,102 @@
+[
+  {
+    "query_caption": "no tags",
+    "query_clip_id": 25,
+    "top3_matched_clip_ids": [
+      2698,
+      35,
+      32
+    ],
+    "correct_in_top3": false
+  },
+  {
+    "query_caption": "guitar",
+    "query_clip_id": 32,
+    "top3_matched_clip_ids": [
+      2698,
+      3481,
+      32
+    ],
+    "correct_in_top3": true
+  },
+  {
+    "query_caption": "no tags",
+    "query_clip_id": 35,
+    "top3_matched_clip_ids": [
+      2698,
+      35,
+      32
+    ],
+    "correct_in_top3": true
+  },
+  {
+    "query_caption": "classical, slow, strings, violin",
+    "query_clip_id": 153,
+    "top3_matched_clip_ids": [
+      32,
+      153,
+      1654
+    ],
+    "correct_in_top3": true
+  },
+  {
+    "query_caption": "slow, techno, electronic, ambient, synth, male vocal, male voice",
+    "query_clip_id": 349,
+    "top3_matched_clip_ids": [
+      32,
+      153,
+      35
+    ],
+    "correct_in_top3": false
+  },
+  {
+    "query_caption": "sitar",
+    "query_clip_id": 644,
+    "top3_matched_clip_ids": [
+      32,
+      644,
+      35
+    ],
+    "correct_in_top3": true
+  },
+  {
+    "query_caption": "techno, rock, vocal, pop",
+    "query_clip_id": 814,
+    "top3_matched_clip_ids": [
+      32,
+      153,
+      35
+    ],
+    "correct_in_top3": false
+  },
+  {
+    "query_caption": "slow, piano, soft",
+    "query_clip_id": 1654,
+    "top3_matched_clip_ids": [
+      2698,
+      32,
+      1654
+    ],
+    "correct_in_top3": true
+  },
+  {
+    "query_caption": "techno, electronic",
+    "query_clip_id": 2698,
+    "top3_matched_clip_ids": [
+      32,
+      153,
+      644
+    ],
+    "correct_in_top3": false
+  },
+  {
+    "query_caption": "no tags",
+    "query_clip_id": 3365,
+    "top3_matched_clip_ids": [
+      2698,
+      35,
+      32
+    ],
+    "correct_in_top3": false
+  }
+]
